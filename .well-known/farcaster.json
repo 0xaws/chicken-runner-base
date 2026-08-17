@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "Chicken Runner",
+    "iconUrl": "https://0xaws.github.io/chicken-runner-base/icon.png",
+    "homeUrl": "https://0xaws.github.io/chicken-runner-base/",
+    "imageUrl": "https://0xaws.github.io/chicken-runner-base/icon.png",
+    "buttonTitle": "Play",
+    "splashImageUrl": "https://0xaws.github.io/chicken-runner-base/icon.png",
+    "splashBackgroundColor": "#0052ff"
+  }
+}
