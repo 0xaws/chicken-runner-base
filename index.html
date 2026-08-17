@@ -1,120 +1,37 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta name="base:app_id" content="6a3eb887fb80a74d69497abf" />
-  <!-- Cập nhật đường dẫn tuyệt đối chính xác cho repo của bạn -->
-<meta property="og:title" content="Chicken Runner" />
-<meta property="og:description" content="Chạy đua cùng chú gà Base và thu thập Base coins!" />
-<meta property="og:image" content="https://0xaws.github.io/chicken-runner-base/icon.png" />
-
-<meta name="fc:frame" content='{"version":"next","imageUrl":"https://0xaws.github.io/chicken-runner-base/icon.png","button":{"title":"Play Chicken Runner","action":{"type":"launch_frame","name":"Chicken Runner","url":"https://0xaws.github.io/chicken-runner-base/","splashImageUrl":"https://0xaws.github.io/chicken-runner-base/icon.png","splashBackgroundColor":"#0052ff"}}}' />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Chicken Runner - Base Edition</title>
+  <title>Chicken Runner - Base</title>
   
-  <!-- Base & Farcaster Mini App Meta Tags -->
+  <!-- Open Graph Basic -->
   <meta property="og:title" content="Chicken Runner" />
-  <meta property="og:description" content="Chạy đua cùng chú gà Base và thu thập Base coins!" />
-  <meta property="og:image" content="./icon.png" />
-  <meta name="fc:frame" content='{"version":"next","imageUrl":"./icon.png","button":{"title":"Play Chicken Runner","action":{"type":"launch_frame","name":"Chicken Runner","url":"./","splashImageUrl":"./icon.png","splashBackgroundColor":"#0052ff"}}}' />
+  <meta property="og:description" content="Chạy đua cùng chú gà Base!" />
+  <meta property="og:image" content="https://0xaws.github.io/chicken-runner-base/icon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://0xaws.github.io/chicken-runner-base/" />
+
+  <!-- Farcaster / Base Mini App Metas -->
+  <meta name="fc:frame" content="vNext" />
+  <meta name="fc:frame:image" content="https://0xaws.github.io/chicken-runner-base/icon.png" />
+  <meta name="fc:frame:button:1" content="Play Chicken Runner" />
+  <meta name="fc:frame:button:1:action" content="link" />
+  <meta name="fc:frame:button:1:target" content="https://0xaws.github.io/chicken-runner-base/" />
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-    body {
-      background: #0052ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      overflow: hidden;
-      touch-action: none;
-    }
-    #game-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 440px;
-      height: 100vh;
-      max-height: 720px;
-      background: #eef2f6;
-      border-radius: 16px;
-      box-shadow: 0 16px 36px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
-    canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-    .hud {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      right: 14px;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-      z-index: 10;
-    }
-    .hud-box {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(4px);
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-weight: 700;
-      color: #0052ff;
-      font-size: 14px;
-      box-shadow: 0 2px 8px rgba(0,82,255,0.15);
-    }
-    #ui-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 82, 255, 0.88);
-      color: #fff;
-      text-align: center;
-      padding: 24px;
-      z-index: 20;
-      transition: opacity 0.2s ease;
-    }
-    #ui-overlay.hidden {
-      display: none;
-    }
-    h1 {
-      font-size: 34px;
-      font-weight: 800;
-      margin-bottom: 6px;
-      letter-spacing: -0.5px;
-    }
-    p {
-      font-size: 15px;
-      opacity: 0.9;
-      margin-bottom: 24px;
-    }
-    .btn {
-      background: #ffffff;
-      color: #0052ff;
-      border: none;
-      padding: 14px 32px;
-      font-size: 17px;
-      font-weight: 800;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      transition: transform 0.1s;
-    }
-    .btn:active {
-      transform: scale(0.95);
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-user-select: none; }
+    body { background: #0052ff; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; overflow: hidden; touch-action: none; }
+    #game-wrapper { position: relative; width: 100%; max-width: 440px; height: 100vh; max-height: 720px; background: #eef2f6; border-radius: 16px; box-shadow: 0 16px 36px rgba(0,0,0,0.3); overflow: hidden; }
+    canvas { display: block; width: 100%; height: 100%; }
+    .hud { position: absolute; top: 14px; left: 14px; right: 14px; display: flex; justify-content: space-between; pointer-events: none; z-index: 10; }
+    .hud-box { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); padding: 8px 14px; border-radius: 20px; font-weight: 700; color: #0052ff; font-size: 14px; box-shadow: 0 2px 8px rgba(0,82,255,0.15); }
+    #ui-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(0, 82, 255, 0.88); color: #fff; text-align: center; padding: 24px; z-index: 20; }
+    #ui-overlay.hidden { display: none; }
+    h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+    p { font-size: 15px; opacity: 0.9; margin-bottom: 24px; }
+    .btn { background: #fff; color: #0052ff; border: none; padding: 14px 32px; font-size: 17px; font-weight: 800; border-radius: 999px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
   </style>
 </head>
 <body>
@@ -123,9 +40,7 @@
       <div class="hud-box" id="score-text">Điểm: 0</div>
       <div class="hud-box" id="high-score-text">Kỷ lục: 0</div>
     </div>
-    
     <canvas id="canvas" width="440" height="720"></canvas>
-
     <div id="ui-overlay">
       <h1 id="title-text">CHICKEN RUNNER</h1>
       <p id="desc-text">Chạm màn hình hoặc ấn Space để nhảy!</p>
@@ -143,7 +58,6 @@
     const scoreText = document.getElementById("score-text");
     const highScoreText = document.getElementById("high-score-text");
 
-    // Audio Synthesis (Web Audio)
     let audioCtx = null;
     function playSound(type) {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -151,7 +65,6 @@
       const gain = audioCtx.createGain();
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-      
       const now = audioCtx.currentTime;
       if (type === 'jump') {
         osc.type = 'sine';
@@ -164,7 +77,6 @@
       } else if (type === 'coin') {
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(987, now);
-        osc.frequency.setValueAtTime(1318, now + 0.08);
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
         osc.start(now);
@@ -189,61 +101,25 @@
     let frame = 0;
 
     const chicken = {
-      x: 65,
-      y: GROUND_Y - 45,
-      w: 42,
-      h: 42,
-      vy: 0,
-      isGrounded: true,
-      wingAngle: 0,
+      x: 65, y: GROUND_Y - 45, w: 42, h: 42, vy: 0, isGrounded: true, wingAngle: 0,
       draw() {
         ctx.save();
         ctx.translate(this.x, this.y);
-
-        // Body
         ctx.fillStyle = "#ffffff";
-        ctx.beginPath();
-        ctx.arc(20, 24, 17, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Head
-        ctx.beginPath();
-        ctx.arc(30, 12, 11, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Comb (Mào gà)
+        ctx.beginPath(); ctx.arc(20, 24, 17, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(30, 12, 11, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "#ff3b30";
-        ctx.beginPath();
-        ctx.arc(30, 2, 4.5, 0, Math.PI * 2);
-        ctx.arc(26, 3, 3.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Beak (Mỏ)
+        ctx.beginPath(); ctx.arc(30, 2, 4.5, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "#ff9500";
-        ctx.beginPath();
-        ctx.moveTo(38, 10);
-        ctx.lineTo(46, 14);
-        ctx.lineTo(38, 18);
-        ctx.fill();
-
-        // Eye
+        ctx.beginPath(); ctx.moveTo(38, 10); ctx.lineTo(46, 14); ctx.lineTo(38, 18); ctx.fill();
         ctx.fillStyle = "#000";
-        ctx.beginPath();
-        ctx.arc(33, 11, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Wing (Cánh đập khi chạy/nhảy)
+        ctx.beginPath(); ctx.arc(33, 11, 2.5, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "#e2e8f0";
         ctx.beginPath();
         const wingOffset = Math.sin(this.wingAngle) * 4;
-        ctx.ellipse(14, 24 + wingOffset, 10, 6, -0.2, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Feet
+        ctx.ellipse(14, 24 + wingOffset, 10, 6, -0.2, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = "#ff9500";
-        ctx.fillRect(12, 38, 4, 7);
-        ctx.fillRect(24, 38, 4, 7);
-
+        ctx.fillRect(12, 38, 4, 7); ctx.fillRect(24, 38, 4, 7);
         ctx.restore();
       },
       jump() {
@@ -257,7 +133,6 @@
         this.vy += 0.68;
         this.y += this.vy;
         this.wingAngle += isPlaying ? 0.3 : 0.05;
-
         if (this.y >= GROUND_Y - this.h) {
           this.y = GROUND_Y - this.h;
           this.vy = 0;
@@ -268,7 +143,6 @@
 
     let obstacles = [];
     let coins = [];
-    let particles = [];
 
     class Obstacle {
       constructor() {
@@ -279,16 +153,9 @@
       }
       draw() {
         ctx.fillStyle = "#0052ff";
-        ctx.beginPath();
-        ctx.roundRect(this.x, this.y, this.w, this.h, [8, 8, 0, 0]);
-        ctx.fill();
-
-        // Base Logo Ring in obstacle
-        ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.arc(this.x + this.w/2, this.y + this.h/2, 6, 0, Math.PI * 2);
-        ctx.stroke();
+        ctx.beginPath(); ctx.roundRect(this.x, this.y, this.w, this.h, [8, 8, 0, 0]); ctx.fill();
+        ctx.strokeStyle = "#ffffff"; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.arc(this.x + this.w/2, this.y + this.h/2, 6, 0, Math.PI * 2); ctx.stroke();
       }
       update() { this.x -= speed; }
     }
@@ -298,52 +165,23 @@
         this.x = canvas.width + 10;
         this.y = GROUND_Y - 90 - Math.random() * 40;
         this.r = 10;
-        this.collected = false;
       }
       draw() {
         ctx.fillStyle = "#ffcc00";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = "#b28900";
-        ctx.font = "bold 10px sans-serif";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText("B", this.x, this.y);
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = "#b28900"; ctx.font = "bold 10px sans-serif";
+        ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText("B", this.x, this.y);
       }
       update() { this.x -= speed; }
     }
 
-    function addDust(x, y) {
-      for(let i=0; i<3; i++) {
-        particles.push({
-          x: x + Math.random()*10,
-          y: y + 35,
-          vx: -(speed * 0.4) + Math.random()*2,
-          vy: -Math.random()*2,
-          alpha: 1
-        });
-      }
-    }
-
     function checkCollision(r1, r2) {
-      return (
-        r1.x + 4 < r2.x + r2.w &&
-        r1.x + r1.w - 4 > r2.x &&
-        r1.y + 4 < r2.y + r2.h &&
-        r1.y + r1.h > r2.y
-      );
+      return (r1.x + 4 < r2.x + r2.w && r1.x + r1.w - 4 > r2.x && r1.y + 4 < r2.y + r2.h && r1.y + r1.h > r2.y);
     }
 
     function resetGame() {
-      score = 0;
-      speed = 5.5;
-      obstacles = [];
-      coins = [];
-      particles = [];
-      chicken.y = GROUND_Y - chicken.h;
-      chicken.vy = 0;
-      frame = 0;
+      score = 0; speed = 5.5; obstacles = []; coins = [];
+      chicken.y = GROUND_Y - chicken.h; chicken.vy = 0; frame = 0;
       scoreText.innerText = `Điểm: 0`;
     }
 
@@ -369,8 +207,6 @@
 
     function loop() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Ground render
       ctx.fillStyle = "#e2e8f0";
       ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
       ctx.fillStyle = "#0052ff";
@@ -379,95 +215,42 @@
       if (isPlaying) {
         frame++;
         chicken.update();
-
-        if (chicken.isGrounded && frame % 6 === 0) {
-          addDust(chicken.x, chicken.y);
-        }
-
-        // Spawn obstacles
-        if (frame % 85 === 0 && Math.random() > 0.25) {
-          obstacles.push(new Obstacle());
-        }
-
-        // Spawn coins
-        if (frame % 130 === 0 && Math.random() > 0.4) {
-          coins.push(new Coin());
-        }
-
-        // Speed ramp
+        if (frame % 85 === 0 && Math.random() > 0.25) obstacles.push(new Obstacle());
+        if (frame % 130 === 0 && Math.random() > 0.4) coins.push(new Coin());
         if (frame % 500 === 0) speed += 0.4;
 
-        // Obstacles loop
         for (let i = obstacles.length - 1; i >= 0; i--) {
           const obs = obstacles[i];
-          obs.update();
-          obs.draw();
-
-          if (checkCollision(chicken, obs)) {
-            gameOver();
-            break;
-          }
-
-          if (obs.x + obs.w < 0) {
-            obstacles.splice(i, 1);
-            score += 10;
-            scoreText.innerText = `Điểm: ${score}`;
-          }
+          obs.update(); obs.draw();
+          if (checkCollision(chicken, obs)) { gameOver(); break; }
+          if (obs.x + obs.w < 0) { obstacles.splice(i, 1); score += 10; scoreText.innerText = `Điểm: ${score}`; }
         }
 
-        // Coins loop
         for (let i = coins.length - 1; i >= 0; i--) {
           const c = coins[i];
-          c.update();
-          c.draw();
-
+          c.update(); c.draw();
           const dist = Math.hypot((chicken.x + 20) - c.x, (chicken.y + 20) - c.y);
           if (dist < 26) {
-            playSound('coin');
-            coins.splice(i, 1);
-            score += 25;
-            scoreText.innerText = `Điểm: ${score}`;
+            playSound('coin'); coins.splice(i, 1);
+            score += 25; scoreText.innerText = `Điểm: ${score}`;
           } else if (c.x < -20) {
             coins.splice(i, 1);
           }
         }
-
-        // Particles
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.alpha -= 0.04;
-          if (p.alpha <= 0) {
-            particles.splice(i, 1);
-          } else {
-            ctx.fillStyle = `rgba(148, 163, 184, ${p.alpha})`;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
       }
-
       chicken.draw();
       requestAnimationFrame(loop);
     }
 
     function handleAction(e) {
       if (e.type === 'keydown' && e.code !== 'Space') return;
-      if (isPlaying) {
-        chicken.jump();
-      }
+      if (isPlaying) chicken.jump();
     }
 
     window.addEventListener("keydown", handleAction);
-    window.addEventListener("pointerdown", (e) => {
-      if (e.target === canvas) handleAction(e);
-    });
+    window.addEventListener("pointerdown", (e) => { if (e.target === canvas) handleAction(e); });
     actionBtn.addEventListener("click", startGame);
-
     loop();
   </script>
 </body>
 </html>
-
